@@ -22,6 +22,9 @@ export default function Home() {
   const [word1, setWord1] = useState("Word");
   const [word2, setWord2] = useState("Word");
 
+  const [points1, setPoints1] = useState(0);
+  const [points2, setPoints2] = useState(0);
+
   const [mode, setMode] = useState("drawing");
 
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -51,6 +54,8 @@ export default function Home() {
 
       setWord1(data.word1);
       setWord2(data.word2);
+      setPoints1(data.points1);
+      setPoints2(data.points2);
     } catch (error) {
       toast.error("Error parsing response: " + error.message);
     }
@@ -73,14 +78,20 @@ export default function Home() {
       <Card className="mt-5 mb-2 items-center w-48">
         <CardContent>
           <h1 className="text-xl">
-            <b> {word1} </b>
+            <b>
+              {" "}
+              {word1} : {points1}{" "}
+            </b>
           </h1>
         </CardContent>
       </Card>
       <Card className="mb-5 mt-2 items-center w-48">
         <CardContent>
           <h1 className="text-xl">
-            <b> {word2} </b>
+            <b>
+              {" "}
+              {word2} : {points2}{" "}
+            </b>
           </h1>
         </CardContent>
       </Card>
