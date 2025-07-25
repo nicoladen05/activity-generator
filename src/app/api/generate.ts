@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import { prompts } from "./prompts.js";
+import { prompts } from "./prompts";
 
 export default async function generateWords(mode: string, apiKey: string) {
   const client = new OpenAI({

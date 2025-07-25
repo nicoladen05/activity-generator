@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button.jsx";
+import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card.jsx";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -15,7 +15,7 @@ import { WandSparkles, Settings } from "lucide-react";
 
 import { useState } from "react";
 
-import SettingsPage from "./settings.js";
+import SettingsPage from "./settings";
 
 export default function Home() {
   const [word1, setWord1] = useState("Word");
