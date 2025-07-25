@@ -76,22 +76,22 @@ export default function Home() {
 
       <Card className="mt-5 mb-2 items-center w-auto">
         <CardContent>
-          <h1 className="text-xl">
-            <b>
-              {" "}
-              {word1} : {points1}{" "}
-            </b>
-          </h1>
+          <div className="flex items-center justify-between w-full">
+            <h1 className="text-xl font-bold">{word1}</h1>
+            <div className="ml-3 px-2 py-0.5 border-gray-400 border-1 rounded-sm bg-secondary text-secondary-foreground">
+              <h2 className="text-xl"> {points1} </h2>
+            </div>
+          </div>
         </CardContent>
       </Card>
-      <Card className="mb-5 mt-2 items-center w-auto">
+      <Card className="mt-5 mb-2 items-center w-auto">
         <CardContent>
-          <h1 className="text-xl">
-            <b>
-              {" "}
-              {word2} : {points2}{" "}
-            </b>
-          </h1>
+          <div className="flex items-center justify-between w-full">
+            <h1 className="text-xl font-bold">{word2}</h1>
+            <div className="ml-3 px-2 py-0.5 border-gray-400 border-1 rounded-sm bg-secondary text-secondary-foreground">
+              <h2 className="text-xl"> {points2} </h2>
+            </div>
+          </div>
         </CardContent>
       </Card>
 
@@ -99,7 +99,7 @@ export default function Home() {
         <Button
           onClick={handleGenerate}
           size="lg"
-          className="mx-1 bg-blue-200 text-black my-5 items-center"
+          className="mx-1 my-5 items-center"
         >
           <WandSparkles />
           Generate
@@ -107,7 +107,7 @@ export default function Home() {
 
         <Dialog open={settingsOpen} onOpenChange={setSettingsOpen}>
           <DialogTrigger asChild>
-            <Button size="lg" className="mx-1">
+            <Button variant="secondary" size="lg" className="mx-1">
               <Settings />
             </Button>
           </DialogTrigger>
