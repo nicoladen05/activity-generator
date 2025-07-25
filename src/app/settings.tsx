@@ -12,7 +12,7 @@ export default function SettingsPage({ setOpen }) {
   const [openaiApiKey, setOpenaiApiKey] = useState("");
   const [keyIsVisible, setKeyIsVisible] = useState(false);
 
-  const validateApiKey = (key) => {
+  const validateApiKey = (key: string) => {
     return key && key.startsWith("sk-") && key.length > 30;
   };
 

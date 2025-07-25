@@ -1,6 +1,6 @@
 import generateWords from "./generate";
 
-export async function GET(request) {
+export async function GET(request: Request) {
   console.log("GET request received");
 
   const headers = request.headers;
