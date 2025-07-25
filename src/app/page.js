@@ -75,7 +75,7 @@ export default function Home() {
         </TabsList>
       </Tabs>
 
-      <Card className="mt-5 mb-2 items-center w-48">
+      <Card className="mt-5 mb-2 items-center w-auto">
         <CardContent>
           <h1 className="text-xl">
             <b>
@@ -85,7 +85,7 @@ export default function Home() {
           </h1>
         </CardContent>
       </Card>
-      <Card className="mb-5 mt-2 items-center w-48">
+      <Card className="mb-5 mt-2 items-center w-auto">
         <CardContent>
           <h1 className="text-xl">
             <b>
