@@ -14,7 +14,7 @@ export default async function generateWords(mode, apiKey) {
 
   try {
     response = await client.responses.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4.1-mini",
       input: prompt,
     });
   } catch (error) {
