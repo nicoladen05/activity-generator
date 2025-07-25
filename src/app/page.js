@@ -1,12 +1,15 @@
 "use client";
 
 import { Button } from "@/components/ui/button.jsx";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent } from "@/components/ui/card.jsx";
 import {
-  Card,
-  CardContent,
-} from "@/components/ui/card.jsx";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { toast } from "sonner";
 
 import { WandSparkles, Settings } from "lucide-react";
@@ -19,9 +22,9 @@ export default function Home() {
   const [word1, setWord1] = useState("Word");
   const [word2, setWord2] = useState("Word");
 
-  const [settingsOpen, setSettingsOpen] = useState(false);
-
   const [mode, setMode] = useState("drawing");
+
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   const handleGenerate = async () => {
     const apiKey = localStorage.getItem("openaiApiKey");
@@ -34,8 +37,8 @@ export default function Home() {
     const response = await fetch("/api", {
       method: "GET",
       headers: {
-        'apiKey': apiKey,
-        'mode': mode,
+        apiKey: apiKey,
+        mode: mode,
       },
     });
 
@@ -55,8 +58,11 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-between p-24">
-
-      <Tabs value={mode} onValueChange={setMode} className="items-center justify-between my-5 w-full">
+      <Tabs
+        value={mode}
+        onValueChange={setMode}
+        className="items-center justify-between my-5 w-full"
+      >
         <TabsList>
           <TabsTrigger value="drawing">Drawing</TabsTrigger>
           <TabsTrigger value="explaining">Explaining</TabsTrigger>
@@ -66,17 +72,25 @@ export default function Home() {
 
       <Card className="mt-5 mb-2 items-center w-48">
         <CardContent>
-          <h1 className="text-xl"><b> {word1} </b></h1>
+          <h1 className="text-xl">
+            <b> {word1} </b>
+          </h1>
         </CardContent>
       </Card>
       <Card className="mb-5 mt-2 items-center w-48">
         <CardContent>
-          <h1 className="text-xl"><b> {word2} </b></h1>
+          <h1 className="text-xl">
+            <b> {word2} </b>
+          </h1>
         </CardContent>
       </Card>
 
       <div className="flex items-center">
-        <Button onClick={handleGenerate} size="lg" className="mx-1 bg-blue-200 text-black my-5 items-center">
+        <Button
+          onClick={handleGenerate}
+          size="lg"
+          className="mx-1 bg-blue-200 text-black my-5 items-center"
+        >
           <WandSparkles />
           Generate
         </Button>
@@ -91,8 +105,8 @@ export default function Home() {
             <DialogTitle>Settings</DialogTitle>
             <SettingsPage setOpen={setSettingsOpen} />
           </DialogContent>
-        </Dialog> 
+        </Dialog>
       </div>
     </main>
   );
-};
+}
