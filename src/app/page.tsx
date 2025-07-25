@@ -6,7 +6,6 @@ import { Card, CardContent } from "@/components/ui/card.jsx";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";

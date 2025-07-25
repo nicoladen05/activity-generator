@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { prompts } from "./prompts.js";
 
-export default async function generateWords(mode, apiKey) {
+export default async function generateWords(mode: string, apiKey: string) {
   const client = new OpenAI({
     apiKey: apiKey,
   });
@@ -10,7 +10,7 @@ export default async function generateWords(mode, apiKey) {
     prompts[mode] +
     " The words should be returned as single json string, so that they can be parsed by a program. The keys for the words should be called word1 and word2 respectively. The points for each word should also be returned with the keys points1 and points2. It is essential that the words are not returned in any other format and the response does not include any other text. It is also essential that the json string is not placed in a markdown code block, it should just be returned as a string.";
 
-  let response;
+  let response: any;
 
   try {
     response = await client.responses.create({
