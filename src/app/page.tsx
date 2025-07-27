@@ -84,7 +84,7 @@ export default function Home() {
           </div>
         </CardContent>
       </Card>
-      <Card className="mt-5 mb-2 items-center w-auto">
+      <Card className="mb-5 mt-2 items-center w-auto">
         <CardContent>
           <div className="flex items-center justify-between w-full">
             <h1 className="text-xl font-bold">{word2}</h1>
