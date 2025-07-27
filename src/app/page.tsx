@@ -99,7 +99,7 @@ export default function Home() {
         <Button
           onClick={handleGenerate}
           size="lg"
-          className="mx-1 my-5 items-center"
+          className="bg-primary mx-1 my-5 items-center"
         >
           <WandSparkles />
           Generate
