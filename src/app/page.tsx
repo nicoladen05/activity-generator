@@ -78,7 +78,7 @@ export default function Home() {
         <CardContent>
           <div className="flex items-center justify-between w-full">
             <h1 className="text-xl font-bold">{word1}</h1>
-            <div className="ml-3 px-2 py-0.5 border-gray-400 border-1 rounded-sm bg-secondary text-secondary-foreground">
+            <div className="ml-3 px-2 py-0.5 border-border border-1 rounded-sm bg-secondary text-secondary-foreground">
               <h2 className="text-xl"> {points1} </h2>
             </div>
           </div>
@@ -88,7 +88,7 @@ export default function Home() {
         <CardContent>
           <div className="flex items-center justify-between w-full">
             <h1 className="text-xl font-bold">{word2}</h1>
-            <div className="ml-3 px-2 py-0.5 border-gray-400 border-1 rounded-sm bg-secondary text-secondary-foreground">
+            <div className="ml-3 px-2 py-0.5 border-border border-1 rounded-sm bg-secondary text-secondary-foreground">
               <h2 className="text-xl"> {points2} </h2>
             </div>
           </div>
