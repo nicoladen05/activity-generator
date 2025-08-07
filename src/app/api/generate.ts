@@ -14,9 +14,8 @@ export default async function generateWords(mode: string, apiKey: string) {
 
   try {
     response = await client.responses.create({
-      model: "gpt-4.1-mini",
+      model: "gpt-5-nano",
       input: prompt,
-      temperature: 1.5,
     });
   } catch (error) {
     console.log("Error generating words: ", error);
