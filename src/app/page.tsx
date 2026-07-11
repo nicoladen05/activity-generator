@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { toast } from "sonner";
 
-import { WandSparkles, Settings } from "lucide-react";
+import { Loader2, WandSparkles, Settings } from "lucide-react";
 
 import { useState } from "react";
 
@@ -27,6 +27,7 @@ export default function Home() {
   const [mode, setMode] = useState("drawing");
 
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const handleGenerate = async () => {
     const apiKey = localStorage.getItem("openaiApiKey");
@@ -49,20 +50,24 @@ export default function Home() {
       return;
     }
 
-    const response = await fetch("/api", {
-      method: "GET",
-      headers: {
-        apiKey: apiKey,
-        mode: mode,
-        recentWords: encodeURIComponent(JSON.stringify(recentWords.slice(-20))),
-      },
-    });
-
-    if (!response.ok) {
-      toast.error("Error: " + response.text());
-    }
-
+    setIsGenerating(true);
     try {
+      const response = await fetch("/api", {
+        method: "GET",
+        headers: {
+          apiKey: apiKey,
+          mode: mode,
+          recentWords: encodeURIComponent(
+            JSON.stringify(recentWords.slice(-20)),
+          ),
+        },
+      });
+
+      if (!response.ok) {
+        toast.error("Error: " + (await response.text()));
+        return;
+      }
+
       const data = await response.json();
 
       setWord1(data.word1);
@@ -76,6 +81,8 @@ export default function Home() {
       );
     } catch (error) {
       toast.error("Error parsing response: " + error.message);
+    } finally {
+      setIsGenerating(false);
     }
   };
 
@@ -117,11 +124,22 @@ export default function Home() {
       <div className="flex items-center">
         <Button
           onClick={handleGenerate}
+          disabled={isGenerating}
+          aria-busy={isGenerating}
           size="lg"
           className="bg-primary mx-1 my-5 items-center"
         >
-          <WandSparkles />
-          Generate
+          {isGenerating ? (
+            <>
+              <Loader2 className="animate-spin" />
+              Generating...
+            </>
+          ) : (
+            <>
+              <WandSparkles />
+              Generate
+            </>
+          )}
         </Button>
 
         <Dialog open={settingsOpen} onOpenChange={setSettingsOpen}>
