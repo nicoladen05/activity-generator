@@ -40,6 +40,7 @@ export default async function generateWords(
     response = await client.responses.create({
       model: "gpt-5-nano",
       input: prompt,
+      temperature: 1.3,
     });
   } catch (error) {
     console.log("Error generating words: ", error);
