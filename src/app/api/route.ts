@@ -7,6 +7,7 @@ export async function GET(request: Request) {
 
   const mode = headers.get("mode");
   const apiKey = headers.get("apiKey");
+  const recentWordsHeader = headers.get("recentWords");
 
   if (!mode) {
     return new Response("You must supply a mode", {
@@ -20,8 +21,22 @@ export async function GET(request: Request) {
     });
   }
 
+  let recentWords: string[] = [];
+  if (recentWordsHeader) {
+    try {
+      const parsed = JSON.parse(decodeURIComponent(recentWordsHeader));
+      if (Array.isArray(parsed)) {
+        recentWords = parsed
+          .filter((word): word is string => typeof word === "string")
+          .slice(-20);
+      }
+    } catch {
+      return new Response("Invalid recent words", { status: 400 });
+    }
+  }
+
   console.log("generating words");
-  const generatedWords = await generateWords(mode, apiKey);
+  const generatedWords = await generateWords(mode, apiKey, recentWords);
   console.log(generatedWords.error);
 
   if (generatedWords.error) {

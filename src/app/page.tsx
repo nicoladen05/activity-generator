@@ -30,6 +30,19 @@ export default function Home() {
 
   const handleGenerate = async () => {
     const apiKey = localStorage.getItem("openaiApiKey");
+    const historyKey = `recentWords:${mode}`;
+    let recentWords: string[] = [];
+
+    try {
+      const storedWords = JSON.parse(localStorage.getItem(historyKey) || "[]");
+      if (Array.isArray(storedWords)) {
+        recentWords = storedWords.filter(
+          (word): word is string => typeof word === "string",
+        );
+      }
+    } catch {
+      localStorage.removeItem(historyKey);
+    }
 
     if (!apiKey) {
       toast.error("Please set your OpenAI API key in the settings.");
@@ -41,6 +54,7 @@ export default function Home() {
       headers: {
         apiKey: apiKey,
         mode: mode,
+        recentWords: encodeURIComponent(JSON.stringify(recentWords.slice(-20))),
       },
     });
 
@@ -55,6 +69,11 @@ export default function Home() {
       setWord2(data.word2);
       setPoints1(data.points1);
       setPoints2(data.points2);
+
+      localStorage.setItem(
+        historyKey,
+        JSON.stringify([...recentWords, data.word1, data.word2].slice(-20)),
+      );
     } catch (error) {
       toast.error("Error parsing response: " + error.message);
     }
