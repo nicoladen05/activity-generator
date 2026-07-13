@@ -17,6 +17,9 @@ import { useState } from "react";
 
 import SettingsPage from "./settings";
 
+/**
+ * Renders the word generation interface with mode selection, generated word scores, and settings controls.
+ */
 export default function Home() {
   const [word1, setWord1] = useState("Word");
   const [word2, setWord2] = useState("Word");
