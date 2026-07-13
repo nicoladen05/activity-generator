@@ -1,5 +1,11 @@
 import generateWords from "./generate";
 
+/**
+ * Generates words based on request headers and returns them as JSON.
+ *
+ * @param request - The request containing the generation mode, API key, and optional recent words.
+ * @returns A JSON response containing generated words, or an error response for invalid input or generation failures.
+ */
 export async function GET(request: Request) {
   console.log("GET request received");
 

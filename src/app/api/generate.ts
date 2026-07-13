@@ -24,6 +24,13 @@ const actingCategories = [
   "Gefühle mit deutlicher Mimik",
 ];
 
+/**
+ * Generates two related words for the selected mode and parses the model response.
+ *
+ * @param mode - Determines the topic categories used for word generation.
+ * @param recentWords - Previously generated words to exclude from the response.
+ * @returns The parsed response containing the generated words and their point values, or an error object when the API reports an error.
+ */
 export default async function generateWords(
   mode: string,
   apiKey: string,
